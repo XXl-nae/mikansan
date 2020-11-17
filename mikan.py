@@ -28,7 +28,7 @@ async def on_message(message):
     if message.author == bot.user:
         return'''
 
-@bot.event
+bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.errors.CommandNotFound):
         await ctx.send('Неизвестная команда. Проверь правильность написания или напиши "!help" для помощи')
