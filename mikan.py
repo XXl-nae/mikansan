@@ -4,6 +4,10 @@ import json
 import requests
 import random
 
+verify = False
+requests.packages.urllib3.disable_warnings()
+
+
 settings = {
     'token': 'Nzc3MTE2MzIxMjI5NTcwMTA4.X6-v-Q.rhwBEMvfDtwdBcvYqbYT6z0MOe0',
     'bot': 'Mikan',
