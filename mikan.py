@@ -27,7 +27,7 @@ async def on_message(message):
     if message.author == bot.user:
         return'''
 
-bot.remove_command('help')
+@bot.remove_command(help)
 
 @bot.event
 async def on_command_error(ctx, error):
@@ -108,8 +108,8 @@ async def help(ctx):
         \n**!rp** - role-play команды\n**!what-u-can** - список возможностей бота (лс)""")
         author = ctx.message.author
         embed = discord.Embed(color = 0xce15d1, title = 'Mikan-bot. Все команды бота (v11). Категории.')
-        embed.add_field(name='Введите !help <category> для большей информации', value=desc)
+        embed.add_field(name='Введите !help <category> для большей информации', value = desc)
         embed.set_footer('Запрос от', author)
-        await ctx.send(embed=embed)
+        await ctx.send(embed = embed)
 
 bot.run('Nzc3MTE2MzIxMjI5NTcwMTA4.X6-v-Q.rhwBEMvfDtwdBcvYqbYT6z0MOe0') 
