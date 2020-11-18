@@ -35,6 +35,8 @@ async def on_command_error(ctx, error):
         await ctx.send('Неизвестная команда. Проверь правильность написания или напиши "!help" для помощи')
     elif isinstance(error, commands.errors.CheckFailure):
         await ctx.send('Тебе низя эту команду')
+    else:
+        await ctx.send('Неизвестная ошибка произошла в мире Микан. Попробуйте ещё или обратитесь к Лёхе.\nКод ошибки:', error)
 
 @bot.command() 
 async def hello(ctx): 
