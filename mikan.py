@@ -21,12 +21,13 @@ bot = commands.Bot(command_prefix = settings['prefix'])
 # await member.dm_channel.send()     мессадж в лс, не забыть
 # cd c:\users\servi\desktop\тест
 
-#проверки, обязательные для каждого бота
-#оаоаоаоаоаоаоа
+#проверки, обязательные для каждого бот
 '''@bot.event
 async def on_message(message):
     if message.author == bot.user:
         return'''
+
+bot.remove_command('help')
 
 @bot.event
 async def on_command_error(ctx, error):
@@ -42,7 +43,8 @@ async def hello(ctx):
 
 @bot.event
 async def on_member_join(ctx): #когда пользователь приходит на сервер, Микан приветствует.
-    await ctx.send(f'Хей, хей, {ctx.event.author}! Добро пожаловать в Суши Сквад! Читай правила и веселись!')
+    author = ctx.event.author
+    await ctx.send(f'Хей, хей, {author.mention}! Добро пожаловать в Суши Сквад! Читай правила и веселись!')
 
 @bot.group() #делаем групповуху команд
 async def randpict(ctx):
@@ -98,5 +100,16 @@ async def koala(ctx):
     embed = discord.Embed(color = 0x878787, title = 'Случайная коала') #цвет - серый
     embed.set_image(url = json_data['link']) 
     await ctx.send(embed = embed)
+
+@bot.group()
+async def help(ctx, *args):
+    if ctx.invoked_subcommand is None:
+        desc = ("""\n**!randpict** - скидывание случайной картинки.\n**!help** - вызывает эту сводку\n**!upd** - сводка по последним нововедениям бота (лс)
+        \n**!rp** - role-play команды\n**!what-u-can** - список возможностей бота (лс)""")
+        author = ctx.message.author
+        embed = discord.Embed(color = 0xce15d1, title = 'Mikan-bot. Все команды бота (v11). Категории.')
+        embed.add_field(name='Введите !help <category> для большей информации', value=desc)
+        embed.set_footer('Запрос от', author)
+        await ctx.send(embed=embed)
 
 bot.run('Nzc3MTE2MzIxMjI5NTcwMTA4.X6-v-Q.rhwBEMvfDtwdBcvYqbYT6z0MOe0') 
