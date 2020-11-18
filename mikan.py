@@ -102,7 +102,7 @@ async def koala(ctx):
     await ctx.send(embed = embed)
 
 @bot.group()
-async def help(ctx, *args):
+async def help(ctx):
     if ctx.invoked_subcommand is None:
         desc = ("""\n**!randpict** - скидывание случайной картинки.\n**!help** - вызывает эту сводку\n**!upd** - сводка по последним нововедениям бота (лс)
         \n**!rp** - role-play команды\n**!what-u-can** - список возможностей бота (лс)""")
